@@ -1,1 +1,40 @@
 /* Cascade Style Sheet for this website */
+* {
+  width: 800px;
+  font-size: 12px;
+  color: darkgray;
+  background-color: white;
+}
+
+header h1 {
+  height: 48px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+body li ul a {
+  color: white;
+  background-color: blue;
+}
+
+footer {
+  background-color: black;
+  font-size: 10px;
+}
+form {
+  width: 400px;
+}
