@@ -38,3 +38,9 @@ footer {
 form {
   width: 400px;
 }
+.menu {
+  display: flex;
+}
+#contact {
+  padding-right: 150px;
+}
