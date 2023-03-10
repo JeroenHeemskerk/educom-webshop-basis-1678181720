@@ -4,6 +4,8 @@
         <title>Chocolate</title>
         <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
       </head>
+      <body>
+        
   <div class="dropdown">
     <button class="dropbtn">Aanhref</button>
     <div class="dropdown-content">
@@ -34,4 +36,6 @@
     ><br />
     <input type="submit" value="Send" />
   </form>
+  
+</body>
 </html>
