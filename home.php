@@ -1,67 +1,39 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Chocolate</title>
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
-  </head>
- <body>
-    <i>
-      <header>
-        <h1>Chocolate</h1>
-    </header>
-    </i>
-    <ul class="menu">
+<?php
+function showHomeContent(){
+  echo'</hr>
+  <i
+  ><div class="sorten">
+    <ul>
+      <li >
+        Here you can find all our 
+        <a
+   
+          href="https://www.lindt.com.nl/nl/shop?gclid=CjwKCAiA3pugBhAwEiwAWFzwdXHqf2g9tj8yaFhEUU2rrpXHNjCV5_aDIPKhZKfNHmBPNe_tg76blRoCBesQAvD_BwE"
+          >Dark Chocolate</a
+        >
+        <img src="images/dark chocolate.webp" width="400" height="500" />
+      </li>
+  
       <li>
-        <a href="./index.html"> Home </a>
-
-      </li>
-      <li id="contact">
-        <a href="./contact.php"> Contact </a>
+        Here you can find all our 
+        <a
+       
+          href="https://www.lindt.com.nl/nl/catalogsearch/result/index/tab/products/?form_key=IwiQUi0MDj1luaZq&q=melk+chocolade&tab=products"
+          >Melk Chocolate</a
+        >
+        <img src="images/melk chocolate.jpg" width="400" height="500" />
       </li>
       <li>
-        <a href="./about.html"> About </a>
+        Here you can find all our
+        <a
+       
+          href="https://www.lindt.com.nl/nl/catalogsearch/result/index/tab/products/?form_key=IwiQUi0MDj1luaZq&q=melk+chocolade&tab=products"
+        >
+          White Chocolate
+        </a>
+        <img src="images/white chocolate.jpg" width="400" height="500" />
       </li>
-    </ul>
-
-</hr>
-<i
-><div class="sorten">
-  <ul>
-    <li >
-      Here you can find all our 
-      <a
- 
-        href="https://www.lindt.com.nl/nl/shop?gclid=CjwKCAiA3pugBhAwEiwAWFzwdXHqf2g9tj8yaFhEUU2rrpXHNjCV5_aDIPKhZKfNHmBPNe_tg76blRoCBesQAvD_BwE"
-        >Dark Chocolate</a
-      >
-      <img src="images/dark chocolate.webp" width="400" height="500" />
-    </li>
-
-    <li>
-      Here you can find all our 
-      <a
-     
-        href="https://www.lindt.com.nl/nl/catalogsearch/result/index/tab/products/?form_key=IwiQUi0MDj1luaZq&q=melk+chocolade&tab=products"
-        >Melk Chocolate</a
-      >
-      <img src="images/melk chocolate.jpg" width="400" height="500" />
-    </li>
-    <li>
-      Here you can find all our
-      <a
-     
-        href="https://www.lindt.com.nl/nl/catalogsearch/result/index/tab/products/?form_key=IwiQUi0MDj1luaZq&q=melk+chocolade&tab=products"
-      >
-        White Chocolate
-      </a>
-      <img src="images/white chocolate.jpg" width="400" height="500" />
-    </li>
-  </></div
-></i>
-
-
-  </body>
-  <hr />
-  <footer>Copy Right 2023 Hana</footer>
-
-</html>
+    </></div
+  ></i>';
+}
+?>
