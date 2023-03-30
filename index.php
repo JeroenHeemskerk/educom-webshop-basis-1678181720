@@ -56,7 +56,7 @@ function showLinks(){
 
 function showHtmlBody($page){
     echo "<body>";
-    showHeader();
+    showHeader($page);
     showMenu();
     showContent($page);
     showFooter();
@@ -66,10 +66,22 @@ function showHtmlBody($page){
 function showHtmlEND(){
     echo "</html>";
 }
-function showHeader(){
+function showHeader($page){
     echo '   <i>
     <header>
-      <h1>Chocolate</h1>
+      <h1>';
+    switch($page) {
+        case 'home':
+            include 'home.php';
+            showHomeHeader();
+            break;
+        case 'register':
+            include 'register.php';
+            showRegisterHeader();
+            break;
+    }
+      
+    echo '</h1>
   </header>
   </i>';
 }
@@ -86,22 +98,30 @@ function showMenu(){
     <li>
       <a href="./index.php?page=about"> About </a>
     </li>
+    <li>
+      <a href="./index.php?page=register">Register </a>
   </ul>';
 }
+
+
 
 function showContent($page){
     switch($page){
         case "home":
-            include("home.php");
+            include_once("home.php");
             showHomeContent();
             break;
         case "about":
-            include("about.php");
+            include_once("about.php");
             showAboutContent();
             break;
         case "contact":
-            include("contact.php");
+            include_once("contact.php");
             showContactContent();
+            break;
+        case "register":
+            include_once("register.php");
+            showRegisterContent();
             break;
         default: 
             showError();
@@ -120,6 +140,10 @@ function showFooter(){
     echo "<footer>";
     echo "Copy Right 2023 Hana"; 
     echo "</footer>";
+}
+
+function logToServer($message) {
+    echo "LOGGING TO THE SERVER: " . $message;
 }
 
 ?>

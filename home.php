@@ -1,4 +1,8 @@
 <?php
+
+function showHomeHeader() {
+  echo 'Chocolate';
+}
 function showHomeContent(){
   echo'</hr>
   <i

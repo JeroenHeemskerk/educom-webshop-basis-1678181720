@@ -55,3 +55,6 @@ form label {
   width: 150px;
   display: inline-block;
 }
+.error {
+  color: red;
+}

@@ -5,6 +5,7 @@
       showContactForm($data);
   }else{
     showContactValid($data);
+    showThankyouPage($data);
   }
 }
   function validateContact()
@@ -147,4 +148,12 @@
         <br />
       </form>';
     }
+
+    function showThankyouPage($data)
+    {
+        echo '<div class="content">
+        <p>Thank you for your message, ' . $data['name'] . '!</p>
+        </div>';
+    }
+
 
