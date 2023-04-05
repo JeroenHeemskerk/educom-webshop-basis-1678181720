@@ -6,6 +6,7 @@
       showRegisterForm($data);
   }else{
     showRegisterValid();
+    storeUser($data["email"], $data["name"],$data["password"]);
   }
 }
 function validateRegister(){ 
@@ -44,10 +45,11 @@ function validateRegister(){
       
         if (empty($nameErr)  && empty($emailErr) && empty ($passwordErr)) {
           $valid = true;
-          addInfo($email,$name,$password,$herhaalPassword);
+
         }
         try {
-            if($valid==true && checkIfEmailExistsInUserFile($email)) {
+            include ("user_service.php");
+            if($valid==true && checkIfUserExist($email)) {
                 $emailErr = "Account already exists";
                 $valid = false; 
             }
@@ -73,53 +75,9 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
   }
-function checkIfEmailExistsInUserFile($email){
-    // 1. open user file
-    $userFile = @fopen("users/users.txt", "r");
-    // 1a.  is de file is niet gevonden
-    if ($userFile == false) {
-    //    T => throw Exception
-       throw new Exception("user file not found");
-    //    F => ga verder
-    }
-    // 2. lees een regel
-     fgets($userFile);
-    // 2a. is de file bij het einde?
-    //     T => return false
-    //     F => ga verder
-    while(!feof($userFile)) {  
-        // 3. lees een regel => $row
-        $row = fgets($userFile);
-        // 4. breek de regel in brokjes met explode()
-        $parts = explode("|",$row);
-        // 5. vergelijk eerste brokje met $email
-        if($parts[0]==$email){
-        //    T => return true;
-           return true;
-        //    F => ga naar stap 2a
-
-        }
-    }
-    // 6. close de file
-    fclose($userFile);
-    //    return false
-    return false;
-}
 
 
-function addInfo($email,$name,$password,$herhaalPassword){
-    $userFile = fopen("users/users.txt", "a");
-    $txt = "$email\n";
-    fwrite($userFile,$txt);
-    $txt = "$name\n";
-    fwrite($userFile,$txt);
-    $txt = "$password\n";
-    fwrite($userFile,$txt);
-    $txt = "$herhaalPassword\n";
-    fwrite($userFile,$txt);
-    fclose($userFile);
 
-}
 
 function showRegisterHeader(){
     echo 'This is register page';
@@ -158,3 +116,4 @@ function showRegisterValid() {
     echo "You Are Registered";
 
 }
+?>

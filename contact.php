@@ -1,4 +1,7 @@
   <?php 
+  function showContactHeader(){
+    echo 'contact';
+  }
   function showContactContent(){
     $data = validateContact();
     if (!$data["valid"]) { 
