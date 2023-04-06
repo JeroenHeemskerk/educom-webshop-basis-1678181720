@@ -22,25 +22,25 @@
 
   
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["aanhref"])) {
+    if (empty(getPostVAR ("aanhref"))) {
       $aanhrefErr = "aanhref is required";
     } else {
-      $aanhref = test_input($_POST["aanhref"]);
+      $aanhref = test_input(getPostVAR ("aanhref"));
     }
-    if (empty($_POST["firstname"])) {
+    if (empty(getPostVAR ("firstname"))) {
       $firstnameErr = "firstname is required";
     } else {
-      $firstname = test_input($_POST["firstname"]);
+      $firstname = test_input(getPostVAR ("firstname"));
     }
     if (empty($_POST["lastname"])) {
       $lastnameErr = "lastname is required";
     } else {
       $lastname = test_input($_POST["lastname"]);
     }
-    if (empty($_POST["telefoon"])) {
+    if (empty(getPostVAR ("telefoon"))) {
       $telefoonErr = "telefoon is required";
     } else {
-      $telefoon = test_input($_POST["telefoon"]);
+      $telefoon = test_input((getPostVAR ("telefoon")));
     }
   
     if (empty($_POST["email"])) {
@@ -49,16 +49,16 @@
       $email = test_input($_POST["email"]);
     }
   
-    if (empty($_POST["comment"])) {
+    if (getPostVAR ("comment")) {
       $commentErr = "comment is required";
     } else {
-      $comment = test_input($_POST["comment"]);
+      $comment = test_input(getPostVAR ("telefoon"));
     }
   
-    if (empty($_POST["communicationChannel"])) {
+    if (empty(getPostVAR ("communicationChannel"))) {
       $communicationChannelErr = "communicationChannel is required";
     } else {
-      $communicationChannel = test_input($_POST["communicationChannel"]);
+      $communicationChannel = test_input(getPostVAR ("communicationChannel"));
     }
   
     if (empty($aanhrefErr)  && empty($firstnameErr) && empty ($lastnameErr) && empty ($telefoonErr) &&

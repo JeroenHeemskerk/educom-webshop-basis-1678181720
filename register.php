@@ -15,28 +15,28 @@ function validateRegister(){
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        if (empty($_POST["name"])) {
+        if (empty(getPostVAR ("name"))) {
           $nameErr = "name is required";
         } else {
-          $name = test_input($_POST["name"]);
+          $name = test_input(getPostVAR ("name"));
         }
       
-        if (empty($_POST["email"])) {
+        if (empty(getPostVAR ("email"))) {
           $emailErr = "Email is required";
         } else {
-          $email = test_input($_POST["email"]);
+          $email = test_input(getPostVAR ("email"));
         }
       
-        if (empty($_POST["password"])) {
+        if (empty(getPostVAR ("password"))) {
           $passwordErr = "password is required";
         } else {
-          $password = test_input($_POST["password"]);
+          $password = test_input(getPostVAR ("password"));
         }
       
-        if (empty($_POST["herhaalPassword"])) {
+        if (empty(getPostVAR ("herhaalPassword"))) {
           $herhaalPasswordErr = "Herhaal password is required";
         } else {
-          $herhaalPassword = test_input($_POST["herhaalPassword"]);
+          $herhaalPassword = test_input(getPostVAR ("herhaalPassword"));
         }
         if($password!=$herhaalPassword){
             $herhaalPasswordErr="Password doesn't match";
