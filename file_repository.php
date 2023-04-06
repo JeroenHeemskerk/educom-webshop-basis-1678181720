@@ -9,6 +9,7 @@
         //    F => ga verder
         }
         // 2. lees een regel
+        try{
          fgets($userFile);
         // 2a. is de file bij het einde?
         //     T => return false
@@ -25,12 +26,15 @@
             //    F => ga naar stap 2a
     
             }
-        }
-        // 6. close de file
-        fclose($userFile);
-        //    return false
+        } 
         return null;
-    }
+        }finally{
+            // 6. close de file
+            fclose($userFile);
+            //    return false
+        
+        }
+    } 
 
     function saveUser($email,$name,$password){
         $userFile = fopen("users/users.txt", "a");
