@@ -1,6 +1,6 @@
   <?php 
   function showContactHeader(){
-    echo 'contact';
+    echo 'Contact';
   }
   function showContactContent(){
     $data = validateContact();

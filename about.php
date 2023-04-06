@@ -1,4 +1,7 @@
 <?php
+  function showAboutHeader(){
+    echo 'About';
+  }
 function showAboutContent(){
   echo '  <p>
   Heerlijke chocoladerepen beschreven met echte chocolade. Kies uit

@@ -79,7 +79,7 @@ function showHeader($page){
             break;
         case 'about':
             include 'about.php';
-            showAboutContent();
+            showAboutHeader();
             break;
         case 'contact':
             include 'contact.php';
@@ -99,41 +99,31 @@ function showHeader($page){
   </header>
   </i>';
 }
+function showMenuItem($link, $label){
+    echo "
+    <li>
+      <a href='./index.php?page=$link'> '$label' </a>
 
+    </li>";
+  }
 function showMenu(){
-    echo '<ul class="menu">
-    <li>
-      <a href="./index.php?page=home"> Home </a>
-
-    </li>
-    <li id="contact">
-      <a href="./index.php?page=contact"> Contact </a>
-    </li>
-    <li>
-      <a href="./index.php?page=about"> About </a>
-    </li>';
-
+    echo
+    '<ul>';
+    showMenuItem('home','Home');
+    showMenuItem('contact','Contact');
+    showMenuItem('about','About');
+    
+    
     if(isUserLoggedIn()){
-        echo '
-        <li>
-            <a href="./index.php?page=logout">Logout '.getLoggedinUserName().' </a>
-        </li>
-        ';
+        showMenuItem('logout','Logout').getLoggedinUserName();
     }else{
-        echo '
-        <li>
-          <a href="./index.php?page=register">Register </a>
-        </li>
-        <li>
-        <a href="./index.php?page=login">Login </a>
-      </li>
-        ';
-
+        showMenuItem('register','Register');
+        showMenuItem('login','Login');
+    
+     }
+     echo
+     '</ul>';
     }
-
-  echo'</ul>';
-}
-
 
 
 function showContent($page){
