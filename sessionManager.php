@@ -1,4 +1,5 @@
 <?php
+
 function doLoginUser($name){
     $_SESSION["Login user"]=$name;
 }

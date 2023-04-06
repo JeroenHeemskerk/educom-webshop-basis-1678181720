@@ -12,7 +12,7 @@
   }
 }
   function validateContact()
-  { 
+  {
   $aanhrefErr = $firstnameErr = $lastnameErr = $telefoonErr = 
   $emailErr = $commentErr = $communicationChannelErr ="";
   $aanhref = $firstname = $lastname = $telefoon = 
@@ -35,7 +35,7 @@
     if (empty($_POST["lastname"])) {
       $lastnameErr = "lastname is required";
     } else {
-      $lastname = test_input($_POST["lastname"]);
+      $lastname = test_input((getPostVAR ("lastname")));
     }
     if (empty(getPostVAR ("telefoon"))) {
       $telefoonErr = "telefoon is required";
@@ -43,16 +43,16 @@
       $telefoon = test_input((getPostVAR ("telefoon")));
     }
   
-    if (empty($_POST["email"])) {
+    if (empty(getPostVAR ("email"))) {
       $emailErr = "Email is required";
     } else {
-      $email = test_input($_POST["email"]);
+      $email = test_input((getPostVAR ("email")));
     }
   
-    if (getPostVAR ("comment")) {
+    if (empty(getPostVAR ("comment"))) {
       $commentErr = "comment is required";
     } else {
-      $comment = test_input(getPostVAR ("telefoon"));
+      $comment = test_input(getPostVAR ("comment"));
     }
   
     if (empty(getPostVAR ("communicationChannel"))) {
@@ -73,12 +73,7 @@
   "email"=>$email,"communicationChannel"=> $communicationChannel, "comment" => $comment,
   "valid"=>$valid];
 }
-  function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
+
 
   function showContactValid($data){
  
@@ -155,7 +150,7 @@
     function showThankyouPage($data)
     {
         echo '<div class="content">
-        <p>Thank you for your message, ' . $data['name'] . '!</p>
+        <p>Thank you for your message, ' . $data['firstname'] . '!</p>
         </div>';
     }
 

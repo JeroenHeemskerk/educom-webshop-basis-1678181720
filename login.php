@@ -11,15 +11,15 @@
 
 function validateLogin(){
     $email =  $emailErr = ""; $password = $passwordErr = ""; $valid = false; $loginErr=""; $name="";
-    if (empty($_POST["email"])) {
+    if (empty(getPostVAR ("email"))) {
         $emailErr = "Email is required";
       } else {
-        $email = test_input($_POST["email"]);
+        $email = test_input(getPostVAR ("email"));
       }
-      if (empty($_POST["password"])) {
+      if (empty(getPostVAR ("password"))) {
         $passwordErr = "Password is required";
       } else {
-        $password = test_input($_POST["password"]);
+        $password = test_input(getPostVAR ("password"));
       }
       if ( empty($emailErr) && empty ($passwordErr)) {
         try {
@@ -44,13 +44,6 @@ function validateLogin(){
       "name"=>$name,
       "valid"=>$valid,"loginErr" => $loginErr];
 }
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
 
     function showLoginHeader(){
         echo 'This is login page';

@@ -188,4 +188,11 @@ function logToServer($message) {
     echo "LOGGING TO THE SERVER: " . $message;
 }
 
+function test_input($data) { 
+    $data = trim($data); 
+    $data = stripslashes($data); 
+    $data = htmlspecialchars($data); 
+    return $data; 
+  } 
+
 ?>
