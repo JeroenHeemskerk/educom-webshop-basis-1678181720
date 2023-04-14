@@ -18,7 +18,7 @@
             // 3. lees een regel => $row
             $row = fgets($userFile);
             // 4. breek de regel in brokjes met explode()
-            $parts = explode("|",$row);
+            $parts = explode("|",$row,3);
             // 5. vergelijk eerste brokje met $email
             if($parts[0]==$email){
             //    T => return true;
@@ -38,7 +38,7 @@
 
     function saveUser($email,$name,$password){
         $userFile = fopen("users/users.txt", "a");
-        $txt =PHP_EOL."$email| $name| $password|";
+        $txt =PHP_EOL."$email| $name| $password";
         fwrite($userFile,$txt);
         fclose($userFile);
     
