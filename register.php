@@ -1,14 +1,6 @@
 
 <?php
-  function showRegisterContent(){
-    $data = validateRegister();
-    if (!$data["valid"]) { 
-      showRegisterForm($data);
-  }else{
-    showRegisterValid();
-    storeUser($data["email"], $data["name"],$data["password"]);
-  }
-}
+
 function validateRegister(){ 
     $name = $nameErr = ""; $email =  $emailErr = ""; $password = $passwordErr = ""; 
     $herhaalPassword = $herhaalPasswordErr=""; $valid = false; $genericErr = "";
@@ -48,7 +40,7 @@ function validateRegister(){
 
         }
         try {
-            include ("user_service.php");
+            include_once ("user_service.php");
             if($valid==true && checkIfUserExist($email)) {
                 $emailErr = "Account already exists";
                 $valid = false; 

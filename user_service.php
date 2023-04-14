@@ -1,5 +1,5 @@
 <?php
-include "file_repository.php";
+include_once "file_repository.php";
 function checkIfUserExist($email){
     $user=findUserByEmail($email);
     if (empty ($user)){

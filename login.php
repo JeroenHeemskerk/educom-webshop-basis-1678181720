@@ -1,13 +1,5 @@
 <?php
-  function showLoginContent(){
-    $data = validateLogin();
-    if (!$data["valid"]) { 
-      showLoginForm($data);
-  }else{
-    showLoginValid($data);
-  
-  }
-}
+
 
 function validateLogin(){
     $email =  $emailErr = ""; $password = $passwordErr = ""; $valid = false; $loginErr=""; $name="";

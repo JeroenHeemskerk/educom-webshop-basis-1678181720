@@ -2,15 +2,7 @@
   function showContactHeader(){
     echo 'Contact';
   }
-  function showContactContent(){
-    $data = validateContact();
-    if (!$data["valid"]) { 
-      showContactForm($data);
-  }else{
-    showContactValid($data);
-    showThankyouPage($data);
-  }
-}
+
   function validateContact()
   {
   $aanhrefErr = $firstnameErr = $lastnameErr = $telefoonErr = 

@@ -2,7 +2,8 @@
 session_start();
 include("sessionManager.php");
 $page = getRequestedPage();
-showResponsePage ($page);
+$data = processRequest($page);
+showResponsePage ($data);
 
 function getRequestedPage () {
     if ($_SERVER['REQUEST_METHOD']=="POST") {
@@ -13,6 +14,46 @@ function getRequestedPage () {
      return $page;
     
 } 
+
+function processRequest($page){
+
+        switch($page) {
+
+            case 'contact':
+                include_once 'contact.php';
+                $data = validateContact();
+                if ($data["valid"]) { 
+                $page = "thanks";
+                }
+                break;
+            case 'register':
+                include_once 'register.php';
+                $data = validateRegister();
+                if ($data["valid"]) { 
+                    storeUser($data["email"],$data["name"],$data["password"]);
+                    $page = "login";
+                }
+                break;
+            case 'login':
+                include_once 'login.php';
+                $data = validateLogin();
+                if ($data["valid"]){
+                doLoginUser($data["name"]);
+                $page = "home";
+                }
+                break;
+            case 'logout';
+                doLogOutUser();
+                $page = "home";
+                break;    
+        }
+        $data["page"]=$page;
+        return $data;
+    }
+
+
+
+
 function getPostVAR ($key, $default=""){
  $value = filter_input(INPUT_POST, $key);
     
@@ -30,10 +71,10 @@ function getURLVAR ($key, $default=""){
        return $default;
    }
 
-function showResponsePage($page){
+function showResponsePage($data){
     showHtmlStart();
     showHtmlHeader();
-    showHtmlBody($page);
+    showHtmlBody($data);
     showHtmlEND();
 
 }
@@ -56,11 +97,11 @@ function showLinks(){
     echo '<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />';
 }
 
-function showHtmlBody($page){
+function showHtmlBody($data){
     echo "<body>";
-    showHeader($page);
+    showHeader($data["page"]);
     showMenu();
-    showContent($page);
+    showContent($data);
     showFooter();
     echo "</body>";
 }
@@ -74,23 +115,23 @@ function showHeader($page){
       <h1>';
     switch($page) {
         case 'home':
-            include 'home.php';
+            include_once 'home.php';
             showHomeHeader();
             break;
         case 'about':
-            include 'about.php';
+            include_once 'about.php';
             showAboutHeader();
             break;
         case 'contact':
-            include 'contact.php';
+            include_once 'contact.php';
             showContactHeader();
             break;
         case 'register':
-            include 'register.php';
+            include_once 'register.php';
             showRegisterHeader();
             break;
         case 'login':
-            include 'login.php';
+            include_once 'login.php';
             showLoginHeader();
             break;
     }
@@ -108,7 +149,7 @@ function showMenuItem($link, $label){
   }
 function showMenu(){
     echo
-    '<ul>';
+    '<ul class="menu">';
     showMenuItem('home','Home');
     showMenuItem('contact','Contact');
     showMenuItem('about','About');
@@ -126,8 +167,8 @@ function showMenu(){
     }
 
 
-function showContent($page){
-    switch($page){
+function showContent($data){
+    switch($data["page"]){
         case "home":
             include_once("home.php");
             showHomeContent();
@@ -138,15 +179,19 @@ function showContent($page){
             break;
         case "contact":
             include_once("contact.php");
-            showContactContent();
+            showContactForm($data);
+            break;
+        case "thanks":
+            showContactValid($data);
+            showThankyouPage($data);
             break;
         case "register":
             include_once("register.php");
-            showRegisterContent();
+            showRegisterForm($data);
             break;
         case "login":
             include_once("login.php");
-            showLoginContent();
+            showLoginForm($data);
             break;
 
         case "logout":
